@@ -10,12 +10,16 @@ class Filters extends BaseConfig
 		'csrf'     => \CodeIgniter\Filters\CSRF::class,
 		'toolbar'  => \CodeIgniter\Filters\DebugToolbar::class,
 		'honeypot' => \CodeIgniter\Filters\Honeypot::class,
+		'logincheck' => \App\Filters\LoginFilter::class,
+		'logoutcheck' => \App\Filters\LogoutFilter::class,
+		'admincheck' => \App\Filters\AdminFilter::class,
+		'usercheck' => \App\Filters\UserFilter::class
 	];
 
 	// Always applied before every request
 	public $globals = [
 		'before' => [
-			//'honeypot'
+			//''honeypot''
 			// 'csrf',
 		],
 		'after'  => [

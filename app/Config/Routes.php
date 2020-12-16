@@ -22,6 +22,24 @@ $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 $routes->setAutoRoute(true);
 
+$routes->get('/login', 'Login::index', ['filter' => 'logincheck']);
+$routes->post('login/proceed', 'Login::proceed');
+$routes->get('/logout', 'Login::logout', ['filter' => 'logoutcheck']);
+
+
+$routes->get('/admin', 'AdminController::index', ['filter' =>  'admincheck']);
+$routes->get('/user', 'UserController::index', ['filter' =>  'usercheck']);
+
+$routes->get('/regiter', 'Register::index', ['filter' =>  'logincheck']);
+$routes->get('/regiter/usercheck', 'Register::usercheck');
+$routes->get('/regiter/proceed', 'Register::proceed', ['filter' =>  'logincheck']);
+
+
+// $routes->group('products', ['filter' => 'ceklogin'], function($routes) {
+//     $routes->get('/', 'Products::index');
+//     $routes->get('products/add', 'Products::add');
+//     $routes->post('products/store', 'Products::store');
+// });
 /**
  * --------------------------------------------------------------------
  * Route Definitions
@@ -30,8 +48,8 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
-$routes->get('/', 'Home::index');
+// $routes->get('/', 'Home::index');
+
 
 /**
  * --------------------------------------------------------------------

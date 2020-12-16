@@ -34,7 +34,7 @@ class Database extends \CodeIgniter\Database\Config
 		'hostname' => 'localhost',
 		'username' => 'luzion',
 		'password' => '123123',
-		'database' => 'myth_auth',
+		'database' => 'db_apel_bunda',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
 		'pConnect' => false,
