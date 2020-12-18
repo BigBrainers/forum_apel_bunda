@@ -32,8 +32,8 @@ class Database extends \CodeIgniter\Database\Config
 	public $default = [
 		'DSN'      => '',
 		'hostname' => 'localhost',
-		'username' => 'luzion',
-		'password' => '123123',
+		'username' => 'root',
+		'password' => '',
 		'database' => 'db_apel_bunda',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',

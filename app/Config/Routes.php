@@ -34,6 +34,10 @@ $routes->get('/regiter', 'Register::index', ['filter' =>  'logincheck']);
 $routes->get('/regiter/usercheck', 'Register::usercheck');
 $routes->get('/regiter/proceed', 'Register::proceed', ['filter' =>  'logincheck']);
 
+$routes->post('admin/postquestion', 'AdminController::questionPost');
+$routes->post('user/postquestion', 'UserController::questionPost');
+
+$routes->post('admin/deletequestion', 'AdminController::deletePost');
 
 // $routes->group('products', ['filter' => 'ceklogin'], function($routes) {
 //     $routes->get('/', 'Products::index');
