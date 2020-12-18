@@ -15,7 +15,7 @@
 <header>	
 <?= $this->include('navbar')?>
 <div class="jumbotron jumbotron-fluid jumbotron-cust bg-dark center">
-	<div class="container mb-5">
+	<div class="container container-cust mb-5">
 		<div class="row">
 			<div class="col col-sm-8">
 			<h1 class="display-4">Apel Bunda</h1>

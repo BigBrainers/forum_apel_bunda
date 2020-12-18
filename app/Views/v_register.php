@@ -102,7 +102,7 @@
     <header>
     <?= $this->include('navbar')?>
     </header>
-    <div class="container mt-3 ">
+    <div class="container container-cust mt-3 ">
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <h3>Form Register</h3>

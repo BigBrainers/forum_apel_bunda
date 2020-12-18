@@ -14,7 +14,7 @@
         <header>
         <?= $this->include('navbar')?>
         </header>
-        <div class="container mt-5 ">
+        <div class="container container-cust mt-5 ">
             <div class="row">
                 <div class="col-md-6 offset-md-3">
                     <h3>Form Login</h3>
