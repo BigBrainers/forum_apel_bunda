@@ -1,6 +1,8 @@
 
 <script>
-$(document).ready(function(){       
+$(document).ready(function(){
+  var width = $(window).width();
+
    var scroll_start = -1;
    var startchange = $('#startChange');
    var offset = startchange.offset();
@@ -8,15 +10,23 @@ $(document).ready(function(){
    $(document).scroll(function() { 
       scroll_start = $(this).scrollTop();
       if(scroll_start > offset.top) {
+        console.log(width);
           $(".navbar-cust").css('background-color', 'rgb(51, 48, 48, 0.7)');
           $(".navbar-cust").css('padding', '.5rem 9rem');
           $(".navbar-cust").css('height', '70px');
           $(".ab-logo").css('height', '20px');
        } else {
+         if( width < 680 ){
+          $(".navbar-cust").css('background-color', 'rgb(51, 48, 48, 0.7)');
+          $(".navbar-cust").css('padding', '.5rem 9rem');
+          $(".navbar-cust").css('height', '50px');
+          $(".ab-logo").css('height', '20px');
+         }else{
           $('.navbar-cust').css('background-color', 'rgb(28,117,48,1)');
           $(".navbar-cust").css('padding', '3rem 9rem');
           $(".navbar-cust").css('height', '140px');
           $(".ab-logo").css('height', '45px');
+         }
        }
    });
     }
@@ -33,7 +43,7 @@ $(document).ready(function(){
       </li>
        <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <? if (!session('id')){
+        <?php if (!session('id')){
             echo "Guest";
           }else{
             echo session()->get()['username'];
@@ -44,7 +54,7 @@ $(document).ready(function(){
           <a class="dropdown-item" href="#">Another action</a>
           <a class="dropdown-item" href="#">Something else here</a>
           <div class="dropdown-divider"></div>
-          <? if (!session('id')) { 
+          <?php if (!session('id')) { 
                   echo '<a class="dropdown-item" href="'.base_url("/login").'">Login</a>'; 
                   echo '<a class="dropdown-item" href="'.base_url("/register").'">Register</a>'; 
               }else{

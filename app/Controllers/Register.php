@@ -24,6 +24,20 @@ class Register extends BaseController{
         }
     }
 
+    public function emailCheck(){
+        if ($this->request->isAJAX()) {
+            $email = service('request')->getPost('email');
+            $check = $this->auth->checkEmail($email);
+            //var_dump($this->request->getPost('query'));
+            if(!empty($check)){
+                return json_encode(['success'=> 'success', 'csrf' => csrf_hash(), 'available' => false ]);
+            }else{
+                return json_encode(['success'=> 'success', 'csrf' => csrf_hash(), 'available' => true ]);
+            }
+            
+        }
+    }
+
     public function proceed(){
         $username = htmlspecialchars($this->request->getPost('username'));
         $password = htmlspecialchars($this->request->getPost('password'));
