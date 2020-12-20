@@ -15,9 +15,8 @@ header{
     height: 45px;
     transition: background-color 400ms ease-in-out;
 }
-.container-cust {
+.container-cust{
     color : white;
-
 }
 .navbar-cust{
     padding: 3rem 9rem ;

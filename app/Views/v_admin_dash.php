@@ -12,17 +12,51 @@
 </head>
 <body>
     <header>
-    <?= $this->include('navbar')?>
+        <?= $this->include('navbar')?>
     </header>
-<main>
-    <section id="startChange" class="section-cust">
-    <h1>admin Dashboard</h1>
+<main class="container" id="startChange">
+    <section  class="section-cust">
+        <h1>admin Dashboard</h1>
+        <form action="<?= base_url('admin/postquestion')?>" method="POST" class="col-sm-4">
+            <div class="form-group">
+                <input type="text" name="q_title" placeholder="title" class="form-control">
+            </div>
+            <div class="form-group">
+                <textarea type="text" name="q_body" placeholder="body" class="form-control"></textarea>
+            </div>
+            <div>
+                <input type="submit" value="submit" class="btn btn-primary">
+            </div>
+        </form>
+        <div class="row">
+        <?php
+            foreach ($questions as $row){
+        ?>
+        <div class="col-sm-4">
+            <div class="article-card card mb-3 border-success">
+                <div class="card-header border-success">
+                    <?= $row->q_title;?>
+                    <form action="admin/deletequestion" method="POST">
+                        <input type="text" name="q_id" hidden value="<?= $row->q_id; ?>">
+                        <input type="submit" class="btn btn-danger" value="Delete">
+                    </form>
+                </div>
+                <div class="card-body"> 
+                    <p><?= $row->q_body;?></p>
+                    <p><?= $row->q_date;?></p>
+                </div>
+            </div>
+        </div>
+        <?php
+            }
+        ?>
+        </div>
     </section>
     <section id="startChange" class="section-cust">
-    <h1>admin Dashboard</h1>
+        <h1>admin Dashboard</h1>
     </section>
     <section id="startChange" class="section-cust">
-    <h1>admin Dashboard</h1>
+        <h1>admin Dashboard</h1>
     </section>
 </main>
 </body>
