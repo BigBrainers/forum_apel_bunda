@@ -13,8 +13,13 @@
         public function postQuestion($data) {
             return $this->db->table($this->table)->insert($data);
         }
+        //Delete Questions
         public function deleteQuestion($id) {
             return $this->db->table($this->table)->delete(array('q_id' => $id));
+        }
+        //Edit Questions
+        public function editQuestion($data, $id) {
+            return $this->db->table($this->table)->update($data, array('q_id' => $id));
         }
     }
 ?>

@@ -34,6 +34,12 @@
         ?>
         <div class="col-sm-4">
             <div class="article-card card mb-3 border-success">
+                <button type="button" class="btn btn-primary" 
+                    data-id="<p><?= $row->q_id;?></p>" 
+                    data-title="<p><?= $row->q_title;?></p>" 
+                    data-body="<p><?= $row->q_body;?></p>">
+                    Edit
+                </button>
                 <div class="card-header border-success">
                     <?= $row->q_title;?>
                 </div>
