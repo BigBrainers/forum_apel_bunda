@@ -15,7 +15,7 @@
     <?= $this->include('navbar')?>
     </header>
     <div class="container mt-5 ">
-        <div class="row">
+        <div class="row text-white">
             <div class="col-md-6 offset-md-3">
                 <h3>Form Login</h3>
                 <hr>
@@ -35,8 +35,6 @@
                 </form>
             </div>
         </div>
-         
     </div>
-     
 </body>
 </html>
