@@ -25,7 +25,8 @@
             <div class="article-card card mb-3">
                 <div class="card-header">
                     <h5><?= $row->q_title;?></h5>
-                    <p class="text-muted"><?= $row->q_date;?></p>
+                    <span class="text-muted">pada <?= date('l, d F Y, ', strtotime($row->q_date));?></span>
+                    <span class="text-muted">oleh</span> <i><?= $row->user_username;?></i>
                     <form action="admin/deletequestion"  method="POST">
                         <input type="text" name="q_id" hidden value="<?= $row->q_id; ?>">
                         <input type="submit" class="btn btn-danger" value="Delete">
@@ -40,7 +41,10 @@
                     <?php } ?>
                 </div>
                 <div class="card-body ">
-                    <p><?= substr(nl2br($row->q_body), 0 ,240).'...';?></p>
+                    <?php if(strlen($row->q_body)>439){?>
+                    <p><?= substr(nl2br($row->q_body), 0 ,460).'......(more)'; ?></p>
+                    <?php } else{?>
+                        <?= $row->q_body; }?>
                 </div>
                 <div class="card-footer text-center">
                     <form action="qna" method="POST">
