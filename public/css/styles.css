@@ -17,6 +17,13 @@
     bottom: 50px;
     cursor: pointer;
 }
+.modal-full {
+    min-width: 20%;
+    margin-left: 80;
+}
+.modal-full .modal-content {
+    min-height: 100vh;
+}
 .btn-act:hover{
     background: #e6881e;
 }
