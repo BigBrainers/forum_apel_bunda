@@ -17,6 +17,9 @@ class Auth_model extends Model{
     public function checkUsername($username){
         return $this->db->table($this->table)->where(['user_username' => $username])->get()->getRowArray();
     }
+    public function checkEmail($email){
+        return $this->db->table($this->table)->where(['user_email' => $email])->get()->getRowArray();
+    }
     public function userRegist($data){
         return $this->db->table($this->table)->insert($data);
     }

@@ -30,9 +30,17 @@ $routes->get('/logout', 'Login::logout', ['filter' => 'logoutcheck']);
 $routes->get('/admin', 'AdminController::index', ['filter' =>  'admincheck']);
 $routes->get('/user', 'UserController::index', ['filter' =>  'usercheck']);
 
-$routes->get('/regiter', 'Register::index', ['filter' =>  'logincheck']);
-$routes->get('/regiter/usercheck', 'Register::usercheck');
-$routes->get('/regiter/proceed', 'Register::proceed', ['filter' =>  'logincheck']);
+$routes->get('/register', 'Register::index', ['filter' =>  'logincheck']);
+$routes->get('/register/usercheck', 'Register::usercheck');
+$routes->get('/register/emailcheck', 'Register::emailcheck');
+$routes->get('/register/proceed', 'Register::proceed', ['filter' =>  'logincheck']);
+
+$routes->post('admin/postquestion', 'AdminController::questionPost');
+$routes->post('user/postquestion', 'UserController::questionPost');
+$routes->post('user/editquestion', 'UserController::questionEdit');
+
+$routes->post('admin/deletequestion', 'AdminController::deletePost');
+
 
 $routes->post('admin/postquestion', 'AdminController::questionPost');
 $routes->post('user/postquestion', 'UserController::questionPost');

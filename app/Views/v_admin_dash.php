@@ -14,8 +14,8 @@
     <header>
         <?= $this->include('navbar')?>
     </header>
-<main class="container">
-    <section id="startChange" class="section-cust">
+<main class="container" id="startChange">
+    <section  class="section-cust">
         <h1>admin Dashboard</h1>
         <form action="<?= base_url('admin/postquestion')?>" method="POST" class="col-sm-4">
             <div class="form-group">
@@ -51,12 +51,6 @@
             }
         ?>
         </div>
-    </section>
-    <section id="startChange" class="section-cust">
-        <h1>admin Dashboard</h1>
-    </section>
-    <section id="startChange" class="section-cust">
-        <h1>admin Dashboard</h1>
     </section>
 </main>
 </body>

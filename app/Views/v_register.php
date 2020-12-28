@@ -13,15 +13,37 @@
         $(document).ready(function(){
             var isunamevalid = false;
             var ispasswvalid = false;
+            var isemailvalid = false;
             $('#emailInput').keyup(function(){
+                var emailcheck = $(this).val();
                 var pattern = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-                console.log(pattern.test($(this).val()));
-                if(!pattern.test($(this).val())){
-                    $(this).addClass('is-invalid');
-                }else{
-                    $(this).removeClass('is-invalid');
+                if(!emailcheck == ''){
+                    $.ajax({
+                        url: 'register/emailcheck',
+                        type: 'post',
+                        dataType:'JSON',
+                        data:{email :emailcheck},
+                        success: function(result){
+                            console.log(result.available && pattern.test(emailcheck));
+                            if(result.available && pattern.test(emailcheck)){
+                                $('#emailInput').addClass('is-valid');
+                                $('#emailInput').removeClass('is-invalid');
+                                var isemailvalid = true;
+                            }else{
+                                $('#emailInput').addClass('is-invalid');
+                                $('#emailInput').removeClass('is-valid');
+                                var isemailvalid = false;
+                            }
+                        }
+                    })
                 }
-            })
+                else{
+                    $('#emailInput').addClass('is-invalid');
+                    $('#emailInput').removeClass('is-valid');
+                    var isemailvalid = false;
+                }
+
+            });
             $('#usernameInput').keyup(function(){
                 var usercheck = $(this).val();
                 if(!usercheck == ''){
@@ -48,19 +70,19 @@
                     isunamevalid = false;
                 }
             });
-            $('#pass2').keyup(function(){
+            $('.pass').keyup(function(){
                 var pass1 = $('#pass1').val();
-                var pass2 = $(this).val();
+                var pass2 = $('#pass2').val();
                 if(pass1 === pass2){
-                    $(this).addClass('is-valid');
+                    $('#pass2').addClass('is-valid');
                     $('#pass1').addClass('is-valid');
-                    $(this).removeClass('is-invalid');
+                    $('#pass2').removeClass('is-invalid');
                     $('#pass1').removeClass('is-invalid');
                     ispasswvalid = true;
                 }else{
-                    $(this).addClass('is-invalid');
+                    $('#pass2').addClass('is-invalid');
                     $('#pass1').addClass('is-invalid');
-                    $(this).removeClass('is-valid');
+                    $('#pass2').removeClass('is-valid');
                     $('#pass1').removeClass('is-valid');
                     ispasswvalid = false;         
                 }
@@ -80,7 +102,7 @@
     <header>
     <?= $this->include('navbar')?>
     </header>
-    <div class="container mt-5 ">
+    <div class="container container-cust mt-3 ">
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <h3>Form Register</h3>
@@ -96,20 +118,20 @@
                         <label for="">Email</label>
                         <input type="text" name="email" id="emailInput" class="form-control" placeholder="Email" required>
                         <div class="valid-feedback">You're good to go.</div>
-                        <div class="invalid-feedback">This email is already taken.</div>
+                        <div class="invalid-feedback">This email is already taken or invalid.</div>
                     </div>
                     <div class="form-group">
                         <label for="">Password</label>
-                        <input type="password" id="pass1" name="password" class="form-control" placeholder="Password" required>
+                        <input type="password" id="pass1" name="password" class="form-control pass" placeholder="Password" required>
                     </div>
                     <div class="form-group">
                         <label for="">Confirm Password</label>
-                        <input type="password" id="pass2" name="cpassword" class="form-control" placeholder="Confirm Password" required>
+                        <input type="password" id="pass2" name="cpassword" class="form-control pass" placeholder="Confirm Password" required>
                         <div class="valid-feedback">Password match!.</div>
                         <div class="invalid-feedback">Password not match.</div>
                     </div>
                     <div class="form-group">
-                        <button id="submitBtn" type="submit" class="btn btn-block btn-primary">Login</button>
+                        <button id="submitBtn" type="submit" class="btn btn-block btn-primary">Register</button>
                     </div>
                 </form>
             </div>

@@ -19,7 +19,7 @@ class UserController extends BaseController{
         $this->model->postQuestion($data);
         return redirect()->to('/user');
     }
-    public function questionEdit() {
+    public function questionEdit(){
         $data = array(
             'q_title' => $this->request->getPost('q_title'),
             'q_body' => $this->request->getPost('q_body')

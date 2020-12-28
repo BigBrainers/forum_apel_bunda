@@ -64,10 +64,18 @@ header{
     .image-fp {
         height: 160px;
     }
+    .navbar-cust {
+        padding: .5rem 9rem ;
+        height: 50px;
+    }
     .navbar-cust a{
         margin: 0 auto;
+        height: 140px;
     }
     .ab-logo{
         display: none;
+    }
+    header{
+        height: 70px;
     }
   }
