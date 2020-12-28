@@ -23,5 +23,4 @@ class Auth_model extends Model{
     public function userRegist($data){
         return $this->db->table($this->table)->insert($data);
     }
-  
 }
