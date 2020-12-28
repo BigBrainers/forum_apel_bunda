@@ -19,14 +19,14 @@
                 <div class="col-md-6 offset-md-3">
                     <h3>Form Login</h3>
                     <hr>
-                    <form action="<?= base_url('login/proceed') ?>" method="post">
+                    <form autocomplete="off" action="<?= base_url('login/proceed') ?>" method="post">
                         <div class="form-group">
                             <label for="">Username</label>
-                            <input type="text" name="username" class="form-control" placeholder="Username">
+                            <input autocomplete="FALSE" type="text" name="username" class="form-control" placeholder="Username" required>
                         </div>
                         <div class="form-group">
                             <label for="">Password</label>
-                            <input type="text" name="password" class="form-control" placeholder="Password">
+                            <input type="password" name="password" class="form-control" placeholder="Password" required>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-block btn-primary">Login</button>

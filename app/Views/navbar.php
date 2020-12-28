@@ -1,5 +1,5 @@
 
-<script>
+   <script>
 $(document).ready(function(){
   var width = $(window).width();
 
@@ -10,10 +10,9 @@ $(document).ready(function(){
    $(document).scroll(function() { 
       scroll_start = $(this).scrollTop();
       if(scroll_start > offset.top) {
-        console.log(width);
           $(".navbar-cust").css('background-color', 'rgb(51, 48, 48, 0.7)');
           $(".navbar-cust").css('padding', '.5rem 9rem');
-          $(".navbar-cust").css('height', '70px');
+          $(".navbar-cust").css('height', '50px');
           $(".ab-logo").css('height', '20px');
        } else {
          if( width < 680 ){
@@ -32,7 +31,7 @@ $(document).ready(function(){
     }
 });
 </script>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark navbar-cust">
+   <nav class="navbar fixed-top navbar-expand-lg navbar-dark navbar-cust">
   <a class="navbar-brand" href="<?= base_url('home/') ?>">
   <img src="images/fp.png" class="ab-logo" alt="">  Apel Bunda
   </a>

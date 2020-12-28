@@ -107,7 +107,7 @@
             <div class="col-md-6 offset-md-3">
                 <h3>Form Register</h3>
                 <hr>
-                <form action="<?= base_url('register/proceed') ?>" method="post">
+                <form autocomplete="off" action="<?= base_url('register/proceed') ?>" method="post">
                     <div class="form-group uname">
                         <label for="">Username</label>
                         <input type="text" name="username" id="usernameInput" class="form-control" placeholder="Username" required>
@@ -116,7 +116,7 @@
                     </div>
                     <div class="form-group uname">
                         <label for="">Email</label>
-                        <input type="text" name="email" id="emailInput" class="form-control" placeholder="Email" required>
+                        <input autocomplete="off" type="text" name="email" id="emailInput" class="form-control" placeholder="Email" required>
                         <div class="valid-feedback">You're good to go.</div>
                         <div class="invalid-feedback">This email is already taken or invalid.</div>
                     </div>
