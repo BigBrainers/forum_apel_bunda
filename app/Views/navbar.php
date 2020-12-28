@@ -33,34 +33,37 @@ $(document).ready(function(){
 </script>
    <nav class="navbar fixed-top navbar-expand-lg navbar-dark navbar-cust">
   <a class="navbar-brand" href="<?= base_url('home/') ?>">
-  <img src="images/fp.png" class="ab-logo" alt="">  Apel Bunda
+    <img src="/images/fp.png" class="ab-logo" alt="">  Apel Bunda
   </a>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item float-left">
+        <a class="nav-link active btn-modal">Add Question</a>
+      </li>
+      <li class="nav-item float-left">
         <a class="nav-link active" href="<?= base_url('user/') ?>">Dashboard</a>
       </li>
-       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <?php if (!session('id')){
-            echo "Guest";
-          }else{
-            echo session()->get()['username'];
-          } 
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <?php if (!session('id')){
+              echo "Guest";
+            }else{
+              echo session()->get()['username'];
+            } 
           ?>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-          <div class="dropdown-divider"></div>
-          <?php if (!session('id')) { 
-                  echo '<a class="dropdown-item" href="'.base_url("/login").'">Login</a>'; 
-                  echo '<a class="dropdown-item" href="'.base_url("/register").'">Register</a>'; 
-              }else{
-                  echo '<a class="dropdown-item" href="' .base_url("login/logout").'">Logout</a>';
-              }
-            ?>
-        </div>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="<?= base_url('user/profile/') ?>">Profile</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <?php if (!session('id')) { 
+                    echo '<a class="dropdown-item" href="'.base_url("/login").'">Login</a>'; 
+                    echo '<a class="dropdown-item" href="'.base_url("/register").'">Register</a>'; 
+                }else{
+                    echo '<a class="dropdown-item" href="' .base_url("login/logout").'">Logout</a>';
+                }
+              ?>
+          </div>
       </li>
 	</ul>
   </div>

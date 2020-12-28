@@ -49,6 +49,8 @@ $routes->post('admin/deletequestion', 'AdminController::deletePost');
 
 $routes->post('user/editquestion', 'UserController::questionEdit');
 
+$routes->get('user/profile', 'UserController::profile');
+
 // $routes->group('products', ['filter' => 'ceklogin'], function($routes) {
 //     $routes->get('/', 'Products::index');
 //     $routes->get('products/add', 'Products::add');

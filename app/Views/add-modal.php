@@ -1,6 +1,6 @@
 <script>
      $(document).ready(function(){
-    $('.btn-act').on('click',function(){
+    $('.btn-modal').on('click',function(){
         $('#addModal').modal('show');
         })
 })
