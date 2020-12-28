@@ -15,12 +15,12 @@
         <?= $this->include('navbar')?>
     </header>
 <main class="container">
-    <section id="startChange" class="section-cust">
+    <section id="startChange" class="secton-cust">
         <div class="row">
         <?php
             foreach ($questions as $row){
         ?>
-        <div class="col-sm-12">
+        <div class="col-sm-8 offset-sm-2">
             <div class="article-card card mb-3 border-success">
                 <div class="card-header border-success">
                     <?= $row->q_title;?>
@@ -43,7 +43,7 @@
             }
         ?>
         </div>
-        <a type="button" class=" btn-act text-white">
+        <a type="button" class="btn-act text-white">
         +
         </a>
     </section>

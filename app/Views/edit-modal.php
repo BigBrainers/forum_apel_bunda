@@ -16,7 +16,7 @@
     </script>
 <form action="/user/editquestion" method="post">
         <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-full" role="document">
             <div class="modal-content bg-dark text-white">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
@@ -32,7 +32,7 @@
                  
                 <div class="form-group">
                     <label>Body</label>
-                    <textarea type="text" class="form-control e_body" name="q_body"></textarea>
+                    <textarea rows="12" type="text" class="form-control e_body" name="q_body"></textarea>
                 </div>
             </div>
             <div class="modal-footer">

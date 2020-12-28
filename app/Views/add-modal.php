@@ -6,7 +6,7 @@
 })
     </script>
 <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-full">
                 <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
@@ -17,7 +17,7 @@
                             <input type="text" name="q_title" placeholder="title" class="form-control">
                         </div>
                         <div class="form-group">
-                            <textarea type="text" name="q_body" placeholder="body" class="form-control"></textarea>
+                            <textarea rows="12" type="text" name="q_body" placeholder="body" class="form-control"></textarea>
                         </div>
                         <div>
                             <input type="submit" value="submit" class="btn btn-primary">
