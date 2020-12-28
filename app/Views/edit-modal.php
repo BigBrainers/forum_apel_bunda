@@ -28,8 +28,7 @@
                 <div class="form-group">
                     <label>Title</label>
                     <input type="text" class="form-control e_title" name="q_title">
-                </div>
-                 
+                </div> 
                 <div class="form-group">
                     <label>Body</label>
                     <textarea rows="12" type="text" class="form-control e_body" name="q_body"></textarea>

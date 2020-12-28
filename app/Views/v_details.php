@@ -24,18 +24,26 @@
                 <div class="article-card card mb-3 border-success">
                     <div class="card-header border-success">
                         <?= $row->q_title;?>
-                        <?php if($row->q_user_id == session()->get('id')){ ?>
-                        <button style="float: right;" class="btn btn-primary editBtn"
-                            data-id="<?= $row->q_id?>" 
-                            data-body="<?= $row->q_body ?>"
-                            data-title="<?= $row->q_title?>"
-                            >Edit
-                        </button>
-                            <?php } ?>
                     </div>
                     <div class="card-body"> 
                         <p><?= $row->q_body;?></p>
                         <p><?= $row->q_date;?></p>
+                    </div>
+                </div>
+            </div>
+            <?php
+                }
+            ?>
+            </div>
+            <div class="row">
+            <?php
+                foreach ($answers as $row){
+            ?>
+            <div class="col-sm-8 offset-sm-2">
+                <div class="article-card card mb-3 border-success">
+                    <div class="card-body"> 
+                        <p><?= $row->a_body;?></p>
+                        <p><?= $row->a_date;?></p>
                     </div>
                 </div>
             </div>

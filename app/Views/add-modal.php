@@ -1,6 +1,6 @@
 <script>
      $(document).ready(function(){
-    $('.btn-act').on('click',function(){
+    $('.btn-modal').on('click',function(){
         $('#addModal').modal('show');
         })
 })
@@ -19,14 +19,14 @@
                         <div class="form-group">
                             <textarea rows="12" type="text" name="q_body" placeholder="body" class="form-control"></textarea>
                         </div>
-                        <div>
+                        <!-- <div> 
                             <input type="submit" value="submit" class="btn btn-primary">
+                        </div> -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
                 </div>
             </div>

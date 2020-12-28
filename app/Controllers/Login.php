@@ -19,6 +19,8 @@ class Login extends BaseController{
         if(!empty($check)){
             session()->set("id", $check['user_id']);
             session()->set("username", $check['user_username']);
+            session()->set("email", $check['user_email']);
+            session()->set("bio", $check['user_bio']);
             session()->set("password", $check['user_password']);
             session()->set("role", $check['user_role']);
             $isAdmin = $check['user_role'] === '2';

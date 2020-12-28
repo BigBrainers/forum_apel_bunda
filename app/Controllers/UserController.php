@@ -28,4 +28,7 @@ class UserController extends BaseController{
         $this->model->editQuestion($data, $id);
         return redirect()->to('/user');
     }
+    public function profile(){
+        return view('v_profile');
+    }
 }

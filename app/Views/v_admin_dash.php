@@ -17,30 +17,36 @@
 <main class="container" id="startChange">
     <section  class="section-cust">
         <h1>admin Dashboard</h1>
-
         <div class="row">
         <?php
             foreach ($questions as $row){
         ?>
-        <div class="col-sm-12">
-            <div class="article-card card mb-3 border-success">
-                <div class="card-header border-success">
-                    <?= $row->q_title;?>
+        <div class="col-sm-8 offset-sm-2">
+            <div class="article-card card mb-3">
+                <div class="card-header">
+                    <h5><?= $row->q_title;?></h5>
+                    <p class="text-muted"><?= $row->q_date;?></p>
                     <form action="admin/deletequestion"  method="POST">
                         <input type="text" name="q_id" hidden value="<?= $row->q_id; ?>">
                         <input type="submit" class="btn btn-danger" value="Delete">
                     </form>
                     <?php if($row->q_user_id == session()->get('id')){ ?>
                     <button style="float: right;" class="btn btn-primary editBtn"
-                    data-id="<?= $row->q_id?>" 
-                    data-body="<?= $row->q_body ?>"
-                    data-title="<?= $row->q_title?>"
-                    >Edit</button>
-                        <?php } ?>
+                        data-id="<?= $row->q_id?>" 
+                        data-body="<?= $row->q_body ?>"
+                        data-title="<?= $row->q_title?>"
+                        >Edit
+                    </button>
+                    <?php } ?>
                 </div>
-                <div class="card-body"> 
-                    <p><?= nl2br($row->q_body);?></p>
-                    <p><?= $row->q_date;?></p>
+                <div class="card-body ">
+                    <p><?= substr(nl2br($row->q_body), 0 ,240).'...';?></p>
+                </div>
+                <div class="card-footer text-center">
+                    <form action="qna" method="POST">
+                    <input type="text" name="q_id" hidden value="<?= $row->q_id; ?>">
+                    <input type="submit" class="btn btn-light" value="Selengkapnya">
+                    </form>
                 </div>
             </div>
         </div>
@@ -49,9 +55,10 @@
         ?>
         </div>
     </section>
-        <a type="button" class=" btn-act text-white">
+        <a type="button" class=" btn-modal btn-act text-white">
         +
         </a>
+            <?= $this->include('navbar-bottom')?>
             <?= $this->include('edit-modal')?>
             <?= $this->include('add-modal')?>
     </main>

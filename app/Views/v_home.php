@@ -12,23 +12,41 @@
 
 </head>
 <body>
-<header>	
-<?= $this->include('navbar')?>
-<div class="jumbotron jumbotron-fluid jumbotron-cust bg-dark center">
-	<div class="container container-cust mb-5">
-		<div class="row">
-			<div class="col col-sm-8">
-			<h1 class="display-4">Apel Bunda</h1>
-			<p class="lead">Forum untuk sharing masalah bunda ya bund.</p>
-			</div>
-			<div class="col col-sm-4 text-center">
-			<img class="image-fp" src="images/fp.png" alt="">
+	<header>	
+	<?= $this->include('navbar')?>
+	<div class="jumbotron jumbotron-fluid jumbotron-cust bg-dark center">
+		<div class="container container-cust mb-5">
+			<div class="row">
+				<div class="col col-sm-8">
+				<h1 class="display-4">Apel Bunda</h1>
+				<p class="lead">Forum untuk sharing masalah bunda ya bund.</p>
+				</div>
+				<div class="col col-sm-4 text-center">
+				<img class="image-fp" src="images/fp.png" alt="">
+				</div>
 			</div>
 		</div>
-	</div>
-	</div>
-</header>
-<main>
-</main>
+		</div>
+	</header>
+	<!-- Bottom Navbar -->
+	<?php
+		if (session('id') == null){
+			echo '
+			<nav class="navbar navbar-dark navbar-bottom navbar-expand fixed-bottom">
+				<ul class="navbar-nav nav-justified w-100">
+					<li class="nav-item">
+						<a href="'. base_url("register/").'" class="nav-link">Sign Up</a>
+					</li>
+					<li class="nav-item">
+						<a href="'. base_url("login/").'" class="nav-link">Login</a>
+					</li>
+				</ul>
+			</nav>';
+		} else {
+			echo $this->include('navbar-bottom');
+			echo $this->include('add-modal');
+		}
+	?>
+	
 </body>
 </html>

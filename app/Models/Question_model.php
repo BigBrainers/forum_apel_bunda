@@ -10,6 +10,11 @@
         public function getQuestions() {
             return $this->db->table($this->table)->get();
         }
+        public function getAQuestions($id) {
+            $builder = $this->db->table($this->table);
+            $builder->where('q_id', $id);
+            return $builder->get();
+        }
         public function postQuestion($data) {
             return $this->db->table($this->table)->insert($data);
         }

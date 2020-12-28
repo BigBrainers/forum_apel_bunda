@@ -76,6 +76,12 @@ header{
     animation: boyance 3s ease-in-out infinite;
 }
 
+.navbar-bottom {
+    background-color: rgba(28,117,48,1);
+    color: black;
+    display: none;
+}
+
 @keyframes boyance {
 	0% {
 		transform: translateY(0px);
@@ -90,7 +96,7 @@ header{
 		transform: translateY(0px);
 	}
 }
-@media only screen and (max-width: 680px) {
+@media only screen and (max-width: 980px) {
     .image-fp {
         height: 160px;
     }
@@ -100,7 +106,7 @@ header{
     }
     .navbar-cust a{
         margin: 0 auto;
-        height: 140px;
+        height: 50px;
         text-align: center;
         float: left;
     }
@@ -113,5 +119,7 @@ header{
     .btn-act{
         display: none;
     }
-    
-  }
+    .navbar-bottom {
+        display: block;
+    }
+}

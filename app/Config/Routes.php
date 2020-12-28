@@ -42,6 +42,14 @@ $routes->post('user/editquestion', 'UserController::questionEdit');
 $routes->post('admin/deletequestion', 'AdminController::deletePost');
 
 
+$routes->post('admin/postquestion', 'AdminController::questionPost');
+$routes->post('user/postquestion', 'UserController::questionPost');
+
+$routes->post('admin/deletequestion', 'AdminController::deletePost');
+
+$routes->post('user/editquestion', 'UserController::questionEdit');
+$routes->post('/qna', 'QnaController::index');
+$routes->get('user/profile', 'UserController::profile');
 
 // $routes->group('products', ['filter' => 'ceklogin'], function($routes) {
 //     $routes->get('/', 'Products::index');
