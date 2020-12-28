@@ -13,7 +13,8 @@ class AdminController extends BaseController{
     public function questionPost(){
         $data = array(
             'q_title' => $this->request->getPost('q_title'),
-            'q_body' => $this->request->getPost('q_body')
+            'q_body' => $this->request->getPost('q_body'),
+            'q_user_id' => session()->get('id')
         );
         $this->model->postQuestion($data);
         return redirect()->to('/admin');
