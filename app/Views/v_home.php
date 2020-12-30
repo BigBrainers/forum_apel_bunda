@@ -9,7 +9,6 @@
 	<link rel="stylesheet" href="css/styles.css"/>
 	<script src="js/jquery-3.5.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-
 </head>
 <body>
 	<header>	
@@ -44,9 +43,12 @@
 			</nav>';
 		} else {
 			echo $this->include('navbar-bottom');
-			echo $this->include('add-modal');
+			echo '
+			<a type="button" class=" btn-act text-white">
+				+
+			</a>
+			. $this->include("add-modal").';
 		}
 	?>
-	
 </body>
 </html>

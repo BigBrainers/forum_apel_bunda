@@ -14,10 +14,10 @@
         <header>
         <?= $this->include('navbar')?>
         </header>
-        <div class="container container-cust mt-5 ">
+        <div class="container container-cust mt-5">
             <div class="row">
                 <div class="col-md-6 offset-md-3">
-                    <h3>Form Login</h3>
+                    <br><h3 class="text-center">Login</h3>
                     <hr>
                     <form autocomplete="off" action="<?= base_url('login/proceed') ?>" method="post">
                         <div class="form-group">

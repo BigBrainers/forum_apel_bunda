@@ -19,32 +19,13 @@
     </header>
     <main class="container">
         <section id="startChange" class="section-cust">
-            <h1>Profile</h1>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-4">
-                        Username
-                    </div>
-                    <div class="col-sm-4">
-                        <?= session()->get('username') ?>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4">
-                        Email
-                    </div>
-                    <div class="col-sm-4">
-                    <?= session()->get('email') ?>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4">
-                        Bio
-                    </div>
-                    <div class="col-sm-4">
-                    <?= session()->get('bio') ?>
-                    </div>
-                </div>
+            <h1>Profile</h1><br>
+            <p><?= session()->get('bio') ?></p>
+            <div>
+                <tr>
+                    <td>Username: <?= session()->get('username') ?></td>
+                    <td>Email: <?= session()->get('email') ?></td>
+                </tr>
             </div>
         </section>
     </main>

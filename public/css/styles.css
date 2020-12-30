@@ -47,6 +47,7 @@ header{
 }
 .container-cust{
     color : white;
+    border-radius: 12px;
 }
 .navbar-cust{
     padding: 3rem 9rem ;
@@ -55,6 +56,7 @@ header{
     color: black;
     z-index: 1;
     transition: background-color 400ms ease-in-out;
+    display: block;
 }
 .bg-transparent{
     background: transparent;
@@ -103,6 +105,7 @@ header{
     .navbar-cust {
         padding: .5rem 9rem ;
         height: 50px;
+        display: none;
     }
     .navbar-cust a{
         margin: 0 auto;

@@ -31,7 +31,7 @@
                             data-title="<?= $row->q_title?>"
                             >Edit
                         </button>
-                            <?php } ?>
+                        <?php } ?>
                     </div>
                     <div class="card-body"> 
                         <p><?= $row->q_body;?></p>

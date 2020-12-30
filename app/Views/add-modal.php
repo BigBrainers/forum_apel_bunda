@@ -14,10 +14,10 @@
                 <div class="modal-body">
                 <form action="<?= base_url('admin/postquestion')?>" method="POST" class="col-sm-12">
                         <div class="form-group">
-                            <input type="text" name="q_title" placeholder="title" class="form-control">
+                            <input type="text" name="q_title" placeholder="title" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <textarea type="text" name="q_body" placeholder="body" class="form-control"></textarea>
+                            <textarea type="text" name="q_body" placeholder="body" class="form-control" required></textarea>
                         </div>
                         <!-- <div> 
                             <input type="submit" value="submit" class="btn btn-primary">
