@@ -32,7 +32,7 @@ class Login extends BaseController{
             }
             return redirect()->to('/user');
         } else{
-            return redirect()->to('/login');
+            return redirect()->to('/user');
         }
     }
     public function logout()

@@ -29,16 +29,33 @@ $(document).ready(function(){
        }
    });
     }
+if ($('.navbar-cust').length > 0) { // check if element exists
+    var last_scroll_top = 0;
+    $(window).on('scroll', function() {
+        scroll_top = $(this).scrollTop();
+        if(scroll_top < last_scroll_top) {
+            $('.navbar-cust').removeClass('scrolled-down').addClass('scrolled-up');
+        }
+        else {
+            $('.navbar-cust').removeClass('scrolled-up').addClass('scrolled-down');
+        }
+        last_scroll_top = scroll_top;
+    });
+}
 });
 </script>
-   <nav class="navbar fixed-top navbar-expand-lg navbar-dark navbar-cust">
-  <a class="navbar-brand" href="<?= base_url('home/') ?>">
+   <nav class="navbar fixed-top navbar-expand-lg navbar-dark navbar-cust fixed-top">
+  <a class="navbar-brand mx-auto" href="<?= base_url('home/') ?>">
     <img src="/images/fp.png" class="ab-logo" alt="">  Apel Bunda
   </a>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item float-left">
-        <a class="nav-link active btn-modal">Add Question</a>
+      <?php if (session('id')){
+              echo '<a class="nav-link active btn-modal" style="cursor: pointer;">Add Question</a>';
+            }
+          ?>
+        
       </li>
       <li class="nav-item float-left">
         <a class="nav-link active" href="<?= base_url('user/') ?>">Dashboard</a>

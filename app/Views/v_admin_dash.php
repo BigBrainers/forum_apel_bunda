@@ -8,16 +8,25 @@
 	<link rel="stylesheet" href="css/styles.css"/>
 	<script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-
 </head>
+<script>
+$(document).ready(function(){
+
+})
+</script>
 <body>
     <header>
         <?= $this->include('navbar')?>
     </header>
 <main class="container" id="startChange">
-    <section  class="section-cust">
-        <h1>admin Dashboard</h1>
-        <div class="row">
+        <section class="section-cust d-flex justify-content-center align-items-center">
+            <h2>
+            Hai <?= session()->get('username').'!'?>
+            <small class="text-muted">Selamat bertugas!</small>
+            </h2>
+            <div class="arrow-down"></div>
+        </section>
+        <div class="row container-post">
         <?php
             foreach ($questions as $row){
         ?>
@@ -27,16 +36,13 @@
                     <h5><?= $row->q_title;?></h5>
                     <span class="text-muted">pada <?= date('l, d F Y, ', strtotime($row->q_date));?></span>
                     <span class="text-muted">oleh</span> <i><?= $row->user_username;?></i>
-                    <form action="admin/deletequestion"  method="POST">
-                        <input type="text" name="q_id" hidden value="<?= $row->q_id; ?>">
-                        <input type="submit" class="btn btn-danger" value="Delete">
-                    </form>
                     <?php if($row->q_user_id == session()->get('id')){ ?>
-                    <button style="float: right;" class="btn btn-primary editBtn"
+                        <button class="btn btn-outline-dark editBtn float-right m-1"
                         data-id="<?= $row->q_id?>" 
                         data-body="<?= $row->q_body ?>"
-                        data-title="<?= $row->q_title?>"
-                        >Edit
+                        data-user_id="<?= $row->q_user_id ?>"
+                        data-title="<?= $row->q_title?>">
+                        <?php echo file_get_contents("icons/pencil.svg"); ?>
                     </button>
                     <?php } ?>
                 </div>
@@ -47,10 +53,7 @@
                         <?= $row->q_body; }?>
                 </div>
                 <div class="card-footer text-center">
-                    <form action="qna" method="POST">
-                    <input type="text" name="q_id" hidden value="<?= $row->q_id; ?>">
-                    <input type="submit" class="btn btn-light" value="Selengkapnya">
-                    </form>
+                    <a href="<?= base_url('qna/'.$row->q_id)?>" type="submit" class="btn btn-outline-dark" value="">Selengkapnya</a>
                 </div>
             </div>
         </div>
@@ -58,7 +61,6 @@
             }
         ?>
         </div>
-    </section>
         <a type="button" class=" btn-modal btn-act text-white">
         +
         </a>

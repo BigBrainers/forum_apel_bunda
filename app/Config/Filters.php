@@ -12,8 +12,7 @@ class Filters extends BaseConfig
 		'honeypot' => \CodeIgniter\Filters\Honeypot::class,
 		'logincheck' => \App\Filters\LoginFilter::class,
 		'logoutcheck' => \App\Filters\LogoutFilter::class,
-		'admincheck' => \App\Filters\AdminFilter::class,
-		'usercheck' => \App\Filters\UserFilter::class
+		'admincheck' => \App\Filters\AdminFilter::class
 	];
 
 	// Always applied before every request

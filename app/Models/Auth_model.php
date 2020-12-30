@@ -23,4 +23,7 @@ class Auth_model extends Model{
     public function userRegist($data){
         return $this->db->table($this->table)->insert($data);
     }
+    public function editBio($data){
+        return $this->db->table($this->table)->update($data, array('user_id' => $data['user_id']));
+    }
 }

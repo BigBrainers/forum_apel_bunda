@@ -8,24 +8,20 @@ class QnaController extends BaseController{
         $this->q_model = new Question_model;
         $this->a_model = new Answer_model;
     }
-    public function index(){
-        $id = $this->request->getPost('q_id');
+    public function index($id){
         $data['questions'] = $this->q_model->getAQuestions($id)->getResult();
         $data['answers'] = $this->a_model->getAnswer($id)->getResult();
         return view('v_details',$data);
     }
-    public function questionPost(){
+    public function answerPost(){
         $data = array(
-            'q_title' => $this->request->getPost('q_title'),
-            'q_body' => $this->request->getPost('q_body'),
-            'q_user_id' => session()->get('id')
+            'a_body' => $this->request->getPost('a_body'),
+            'a_question_id' => $this->request->getPost('a_question_id'),
+            'a_user_id' => session()->get('id'),
+            'a_issolution' => 0
         );
-        $this->model->postQuestion($data);
-        return redirect()->to('/admin');
+        $this->a_model->answerPost($data);
+        return redirect()->to($this->request->getPost('a_question_id'));
     }
-    public function deletePost(){
-        $id = $this->request->getPost('q_id');
-        $this->model->deleteQuestion($id);
-        return redirect()->to('/admin');
-    }
+
 }

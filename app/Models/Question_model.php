@@ -17,6 +17,7 @@
         }
         public function getAQuestions($id) {
             $builder = $this->db->table($this->table);
+            $builder->join($this->table3, 'question.q_user_id = ab_user.user_id');
             $builder->where('q_id', $id);
             return $builder->get();
         }
@@ -28,6 +29,9 @@
         }
         public function editQuestion($data, $id){
             return $this->db->table($this->table)->update($data, array('q_id' => $id));
+        }
+        public function markQuestion($q_data, $q_id){
+            return $this->db->table($this->table)->update($q_data, array($this->primaryKey => $q_id));
         }
     }
 ?>

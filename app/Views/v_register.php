@@ -102,11 +102,11 @@
     <header>
     <?= $this->include('navbar')?>
     </header>
-    <div class="container container-cust mt-3 ">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
+    <div class="container-cust center">
+        <div class="container h-100">
+			<div class="row align-items-center h-100">
+            <div class="col col-md-6 mx-auto">
                 <h3>Form Register</h3>
-                <hr>
                 <form autocomplete="off" action="<?= base_url('register/proceed') ?>" method="post">
                     <div class="form-group uname">
                         <label for="">Username</label>
@@ -137,6 +137,7 @@
             </div>
         </div>
         <?= $this->include('navbar-bottom')?>
+    </div>
     </div>
      
 </body>
