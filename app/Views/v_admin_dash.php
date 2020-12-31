@@ -21,10 +21,12 @@
         <?php
             foreach ($questions as $row){
         ?>
-        <div class="col-sm-12">
-            <div class="article-card card mb-3 border-success">
-                <div class="card-header border-success">
-                    <?= $row->q_title;?>
+        <div class="col-sm-8 offset-sm-2">
+            <div class="article-card card mb-3">
+                <div class="card-header">
+                    <h5><?= $row->q_title;?></h5>
+                    <span class="text-muted">pada <?= date('l, d F Y, ', strtotime($row->q_date));?></span>
+                    <span class="text-muted">oleh</span> <i><?= $row->user_username;?></i>
                     <form action="admin/deletequestion"  method="POST">
                         <input type="text" name="q_id" hidden value="<?= $row->q_id; ?>">
                         <input type="submit" class="btn btn-danger" value="Delete">
@@ -38,9 +40,17 @@
                     </button>
                     <?php } ?>
                 </div>
-                <div class="card-body"> 
-                    <p><?= nl2br($row->q_body);?></p>
-                    <p><?= $row->q_date;?></p>
+                <div class="card-body ">
+                    <?php if(strlen($row->q_body)>439){?>
+                    <p><?= substr(nl2br($row->q_body), 0 ,460).'......(more)'; ?></p>
+                    <?php } else{?>
+                        <?= $row->q_body; }?>
+                </div>
+                <div class="card-footer text-center">
+                    <form action="qna" method="POST">
+                    <input type="text" name="q_id" hidden value="<?= $row->q_id; ?>">
+                    <input type="submit" class="btn btn-light" value="Selengkapnya">
+                    </form>
                 </div>
             </div>
         </div>
@@ -49,9 +59,10 @@
         ?>
         </div>
     </section>
-        <a type="button" class=" btn-act text-white">
+        <a type="button" class=" btn-modal btn-act text-white">
         +
         </a>
+            <?= $this->include('navbar-bottom')?>
             <?= $this->include('edit-modal')?>
             <?= $this->include('add-modal')?>
     </main>

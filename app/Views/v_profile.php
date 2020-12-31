@@ -28,6 +28,7 @@
                 </tr>
             </div>
         </section>
+        <?= $this->include('navbar-bottom')?>
     </main>
 </body>
 </html>

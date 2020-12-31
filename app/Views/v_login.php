@@ -35,6 +35,7 @@
                     </form>
                 </div>
             </div>  
+            <?= $this->include('navbar-bottom')?>
         </div>
     </body>
 </html>

@@ -18,7 +18,7 @@
     cursor: pointer;
 }
 .modal-full {
-    min-width: 20%;
+    min-width: 50%;
     margin-left: 80;
 }
 .modal-full .modal-content {
@@ -98,7 +98,7 @@ header{
 		transform: translateY(0px);
 	}
 }
-@media only screen and (max-width: 680px) {
+@media only screen and (max-width: 980px) {
     .image-fp {
         height: 160px;
     }
@@ -109,7 +109,9 @@ header{
     }
     .navbar-cust a{
         margin: 0 auto;
-        height: 140px;
+        height: 50px;
+        text-align: center;
+        float: left;
     }
     .ab-logo{
         display: none;
