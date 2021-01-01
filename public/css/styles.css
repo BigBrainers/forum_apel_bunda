@@ -162,6 +162,7 @@ icon svg{
     .navbar-cust {
         padding: .5rem 0rem ;
         height: 50px;
+        display: none;
     }
     .navbar-cust a{
         width: 100%;

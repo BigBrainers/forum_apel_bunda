@@ -1,33 +1,32 @@
+<script>
+  $(document).ready(function(){
+    var width = $(window).width();
 
-   <script>
-$(document).ready(function(){
-  var width = $(window).width();
-
-   var scroll_start = -1;
-   var startchange = $('#startChange');
-   var offset = startchange.offset();
+    var scroll_start = -1;
+    var startchange = $('#startChange');
+    var offset = startchange.offset();
     if (startchange.length){
-   $(document).scroll(function() { 
+      $(document).scroll(function() { 
       scroll_start = $(this).scrollTop();
       if(scroll_start > offset.top) {
           $(".navbar-cust").css('background-color', 'rgb(51, 48, 48, 0.7)');
           $(".navbar-cust").css('padding', '.5rem 9rem');
           $(".navbar-cust").css('height', '50px');
           $(".ab-logo").css('height', '20px');
-       } else {
-         if( width < 680 ){
-          $(".navbar-cust").css('background-color', 'rgb(51, 48, 48, 0.7)');
-          $(".navbar-cust").css('padding', '.5rem 9rem');
-          $(".navbar-cust").css('height', '50px');
-          $(".ab-logo").css('height', '20px');
-         }else{
-          $('.navbar-cust').css('background-color', 'rgb(28,117,48,1)');
-          $(".navbar-cust").css('padding', '3rem 9rem');
-          $(".navbar-cust").css('height', '140px');
-          $(".ab-logo").css('height', '45px');
-         }
-       }
-   });
+      } else {
+          if( width < 680 ){
+            $(".navbar-cust").css('background-color', 'rgb(51, 48, 48, 0.7)');
+            $(".navbar-cust").css('padding', '.5rem 9rem');
+            $(".navbar-cust").css('height', '50px');
+            $(".ab-logo").css('height', '20px');
+          }else{
+            $('.navbar-cust').css('background-color', 'rgb(28,117,48,1)');
+            $(".navbar-cust").css('padding', '3rem 9rem');
+            $(".navbar-cust").css('height', '140px');
+            $(".ab-logo").css('height', '45px');
+          }
+        }
+      });
     }
 if ($('.navbar-cust').length > 0) { // check if element exists
     var last_scroll_top = 0;
@@ -70,13 +69,11 @@ if ($('.navbar-cust').length > 0) { // check if element exists
           ?>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="<?= base_url('user/profile/') ?>">Profile</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-            <div class="dropdown-divider"></div>
             <?php if (!session('id')) { 
                     echo '<a class="dropdown-item" href="'.base_url("/login").'">Login</a>'; 
                     echo '<a class="dropdown-item" href="'.base_url("/register").'">Register</a>'; 
                 }else{
+                    echo '<a class="dropdown-item" href="'.base_url("/user/profile/").'">Profile</a>';
                     echo '<a class="dropdown-item" href="' .base_url("login/logout").'">Logout</a>';
                 }
               ?>

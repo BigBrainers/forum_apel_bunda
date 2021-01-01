@@ -42,9 +42,12 @@
 			</nav>';
 		} else {
 			echo $this->include('navbar-bottom');
-			echo $this->include('add-modal');
+			echo '
+			<a type="button" class=" btn-act text-white">
+				+
+			</a>
+			. $this->include("add-modal").';
 		}
 	?>
-	
 </body>
 </html>

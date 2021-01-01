@@ -14,7 +14,7 @@
                 </div>
                 <div class="modal-body">
                         <div class="form-group">
-                            <input type="text" name="q_title" placeholder="title" class="form-control">
+                            <input type="text" name="q_title" placeholder="title" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <textarea rows="12" type="text" name="q_body" placeholder="body" class="form-control"></textarea>

@@ -48,7 +48,7 @@
                 var usercheck = $(this).val();
                 if(!usercheck == ''){
                     $.ajax({
-                        url: 'register/usercheck',
+                        url: 'register/usernamecheck',
                         type: 'post',
                         dataType:'JSON',
                         data:{username :usercheck},
@@ -131,7 +131,9 @@
                         <div class="invalid-feedback">Password not match.</div>
                     </div>
                     <div class="form-group">
+                        <p>Dengan klik Register, Anda telah menyetujui Syarat & Ketentuan serta Kebijakan Privasi Apel Bunda.</p>
                         <button id="submitBtn" type="submit" class="btn btn-block btn-primary">Register</button>
+                        <p>Or login here <a href="<?= base_url('/login') ?>">here.</a></p>
                     </div>
                 </form>
             </div>
