@@ -1,6 +1,4 @@
-<?php
-    echo 'Profile';
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,18 +15,33 @@
     <header>
         <?= $this->include('navbar')?>
     </header>
-    <main class="container">
-        <section id="startChange" class="section-cust">
-            <h1>Profile</h1><br>
-            <p><?= session()->get('bio') ?></p>
-            <div>
-                <tr>
-                    <td>Username: <?= session()->get('username') ?></td>
-                    <td>Email: <?= session()->get('email') ?></td>
-                </tr>
-            </div>
-        </section>
+    <main class="container center" id="startChange">
+			<div class="row w-100">
+		        <div class="card col col-lg-8 offset-lg-2 border-success" >
+                    <div class="card-header">
+                        <h3>Profile</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col col-lg-6">
+                                <h2><?= session()->get('username') ?><small class="text-muted"><?= session()->get('email') ?></small></h2>
+                                <button class="btn btn-outline-dark bioBtn float-right m-1"
+                                    data-bio="<?= session()->get('bio') ?>"
+                                    >
+                                    <?php echo file_get_contents("icons/pencil.svg"); ?>
+                                </button>
+                            <p>Bio</p>
+                                <p><?= session()->get('bio') ?></p>
+                            </div>
+                            <div class="col col-lg-4 offset-lg-2">
+                                <img src="/icons/person.svg" alt="">
+                            </div>
+                        </div>
         <?= $this->include('navbar-bottom')?>
+        <?= $this->include('edit-bio')?>
+        </div>
+        </div>
+        </div>
     </main>
 </body>
 </html>

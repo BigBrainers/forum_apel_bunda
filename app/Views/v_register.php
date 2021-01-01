@@ -48,7 +48,7 @@
                 var usercheck = $(this).val();
                 if(!usercheck == ''){
                     $.ajax({
-                        url: 'register/usercheck',
+                        url: 'register/usernamecheck',
                         type: 'post',
                         dataType:'JSON',
                         data:{username :usercheck},
@@ -102,11 +102,11 @@
     <header>
     <?= $this->include('navbar')?>
     </header>
-    <div class="container container-cust mt-3">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <br><h3 class="text-center">Register</h3>
-                <hr>
+    <div class="container-cust center">
+        <div class="container h-100">
+			<div class="row align-items-center h-100">
+            <div class="col col-md-6 mx-auto">
+                <h3>Form Register</h3>
                 <form autocomplete="off" action="<?= base_url('register/proceed') ?>" method="post">
                     <div class="form-group uname">
                         <label for="">Username</label>
@@ -131,7 +131,7 @@
                         <div class="invalid-feedback">Password not match.</div>
                     </div>
                     <div class="form-group">
-                        <p align="center">Dengan klik Register, Anda telah menyetujui Syarat & Ketentuan serta Kebijakan Privasi Apel Bunda.</p>
+                        <p>Dengan klik Register, Anda telah menyetujui Syarat & Ketentuan serta Kebijakan Privasi Apel Bunda.</p>
                         <button id="submitBtn" type="submit" class="btn btn-block btn-primary">Register</button>
                         <p>Or login here <a href="<?= base_url('/login') ?>">here.</a></p>
                     </div>
@@ -139,6 +139,7 @@
             </div>
         </div>
         <?= $this->include('navbar-bottom')?>
+    </div>
     </div>
      
 </body>

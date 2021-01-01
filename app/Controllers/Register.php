@@ -10,7 +10,7 @@ class Register extends BaseController{
     public function index(){
         return view('v_register');
     }
-    public function usercheck(){
+    public function usernamecheck(){
         if ($this->request->isAJAX()) {
             $username = service('request')->getPost('username');
             $check = $this->auth->checkUsername($username);

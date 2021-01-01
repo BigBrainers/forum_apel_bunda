@@ -1,3 +1,7 @@
+
+.container{
+    min-height: 100vh;
+}
 .btn-act{
     background: green;
     display: block;
@@ -17,23 +21,36 @@
     bottom: 50px;
     cursor: pointer;
 }
+.arrow-down {
+    width: 70px; 
+    height: 70px; 
+    border-left: 70px solid transparent;
+    border-right: 70px solid transparent;
+    border-top: 70px solid #f00;
+    bottom: 30px;
+    position:absolute;
+    animation: boyance 3s ease-in-out infinite;
+  }
 .modal-full {
     min-width: 50%;
-    margin-left: 80;
 }
 .modal-full .modal-content {
-    min-height: 100vh;
+    min-height: 80vh;
 }
 .btn-act:hover{
     background: #e6881e;
 }
+.section-adapt{
+    min-height: 20vh;
 
-header{
-    height: 140px;
 }
-
+.textarea[contenteditable]:empty::before {
+    content: "Placeholder still possible";
+    color: gray;
+  }
 .section-cust{
     height: 100vh;
+    top: 0 !important;
 }
 
 .center {
@@ -47,16 +64,49 @@ header{
 }
 .container-cust{
     color : white;
-    border-radius: 12px;
+    top: 0%;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
 }
+.card-profile{
+    min-width: 980px;
+    min-height: 30vh;
+    font-size: x-large;
+}
+.container-post{
+    padding-top: 171px;
+    padding-bottom: 90px;
+    min-height: 100%;
+}
+.nav-link svg{
+    height: 40px;
+}
+svg {
+    height: 16px;
+    width: 16px;
+}
+
+.nav-link svg {
+    height: 32px;
+    width: 32px;
+}
+  .scrolled-down{
+     transform:translateY(-100%); 
+     transition: all 0.9s ease-in-out;
+  }
+  .b-scrolled-down{
+    transform:translateY(100%); 
+    transition: all 0.9s ease-in-out;
+ }
+  .scrolled-up{
+     transform:translateY(0); 
+     transition: all 0.3s ease-in-out;
+  }
 .navbar-cust{
     padding: 3rem 9rem ;
     background-color: rgba(28,117,48,1);
-    height: 140px;
-    color: black;
-    z-index: 1;
-    transition: background-color 400ms ease-in-out;
-    display: block;
+    z-index: 999;
 }
 .bg-transparent{
     background: transparent;
@@ -73,8 +123,7 @@ header{
 }
 
 .image-fp{
-    height: 200px;
-    margin: 0 auto;
+    max-width: 100%;
     animation: boyance 3s ease-in-out infinite;
 }
 
@@ -82,6 +131,14 @@ header{
     background-color: rgba(28,117,48,1);
     color: black;
     display: none;
+    padding: 0 !important;
+}
+icon svg{
+    height: 30px;
+    width: 30px;
+}
+.card-body p{
+    font-size: large;
 }
 
 @keyframes boyance {
@@ -100,24 +157,20 @@ header{
 }
 @media only screen and (max-width: 980px) {
     .image-fp {
-        height: 160px;
+        max-width: 100%;
     }
     .navbar-cust {
-        padding: .5rem 9rem ;
+        padding: .5rem 0rem ;
         height: 50px;
         display: none;
     }
     .navbar-cust a{
-        margin: 0 auto;
+        width: 100%;
         height: 50px;
         text-align: center;
-        float: left;
     }
     .ab-logo{
         display: none;
-    }
-    header{
-        height: 70px;
     }
     .btn-act{
         display: none;
@@ -125,4 +178,15 @@ header{
     .navbar-bottom {
         display: block;
     }
+    .container-post{
+        padding-top: 71px;
+        padding-bottom: 40px;
+    }
+    .card-body p{
+        font-size: medium;
+    }
+    .arrow-down {
+        width: 40px; 
+        height: 40px; 
+      }
 }

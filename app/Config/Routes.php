@@ -26,36 +26,31 @@ $routes->get('/login', 'Login::index', ['filter' => 'logincheck']);
 $routes->post('login/proceed', 'Login::proceed');
 $routes->get('/logout', 'Login::logout', ['filter' => 'logoutcheck']);
 
-
-$routes->get('/admin', 'AdminController::index', ['filter' =>  'admincheck']);
-$routes->get('/user', 'UserController::index', ['filter' =>  'usercheck']);
-
 $routes->get('/register', 'Register::index', ['filter' =>  'logincheck']);
-$routes->get('/register/usercheck', 'Register::usercheck');
+$routes->get('/register/usercheck', 'Register::usernamecheck');
 $routes->get('/register/emailcheck', 'Register::emailcheck');
 $routes->get('/register/proceed', 'Register::proceed', ['filter' =>  'logincheck']);
 
-$routes->post('admin/postquestion', 'AdminController::questionPost');
-$routes->post('user/postquestion', 'UserController::questionPost');
-$routes->post('user/editquestion', 'UserController::questionEdit');
+$routes->get('qna/(:num)', 'QnaController::index/$1', ['filter' => 'logoutcheck']);
+$routes->post('qna/add-answer', 'QnaController::answerPost', ['filter' => 'logoutcheck']);
 
-$routes->post('admin/deletequestion', 'AdminController::deletePost');
+$routes->group('user', ['filter' =>  'logoutcheck'], function($routes) {
+$routes->get('', 'UserController::index');
+$routes->post('postquestion', 'UserController::questionPost');
+$routes->post('editquestion', 'UserController::questionEdit');
+$routes->post('edit-bio', 'UserController::editBio');
+$routes->get('profile', 'UserController::profile');
+$routes->post('editanswer', 'UserController::editAnswer');
+$routes->post('marksolution', 'UserController::markSolution');
+$routes->post('revokesolution', 'UserController::revokeSolution');
 
+});
 
-$routes->post('admin/postquestion', 'AdminController::questionPost');
-$routes->post('user/postquestion', 'UserController::questionPost');
-
-$routes->post('admin/deletequestion', 'AdminController::deletePost');
-
-$routes->post('user/editquestion', 'UserController::questionEdit');
-$routes->post('/qna', 'QnaController::index');
-$routes->get('user/profile', 'UserController::profile');
-
-// $routes->group('products', ['filter' => 'ceklogin'], function($routes) {
-//     $routes->get('/', 'Products::index');
-//     $routes->get('products/add', 'Products::add');
-//     $routes->post('products/store', 'Products::store');
-// });
+$routes->group('admin', ['filter' => 'admincheck'], function($routes) {
+$routes->get('', 'AdminController::index');
+$routes->post('deletequestion', 'AdminController::deletePost');
+$routes->post('deleteanswer', 'AdminController::deleteAnswer');
+});
 /**
  * --------------------------------------------------------------------
  * Route Definitions

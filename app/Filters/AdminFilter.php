@@ -15,7 +15,7 @@ class AdminFilter implements FilterInterface
         }    
         if(!$session['isAdmin'])
             {
-                return redirect()->to('/user');
+                return redirect()->to('/home');
             }
     }
 

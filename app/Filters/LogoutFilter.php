@@ -18,6 +18,5 @@ class LogoutFilter implements FilterInterface
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        session()->set("username", 'Guest');
     }
 }

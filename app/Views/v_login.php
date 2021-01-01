@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta charset="UTF-8">
 	<title>Welcome to Apel Bunda</title>
 	<meta name="description" content="The small framework with powerful features">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,11 +15,11 @@
         <header>
         <?= $this->include('navbar')?>
         </header>
-        <div class="container container-cust mt-5">
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <br><h3 class="text-center">Login</h3>
-                    <hr>
+        <div class="container-cust center">
+        <div class="container h-100">
+			<div class="row align-items-center h-100">
+                <div class="col col-md-6 mx-auto" >
+                    <h3>Form Login</h3>
                     <form autocomplete="off" action="<?= base_url('login/proceed') ?>" method="post">
                         <div class="form-group">
                             <label for="">Username</label>
@@ -34,8 +35,9 @@
                         </div>
                     </form>
                 </div>
-            </div>  
+            </div>
+            </div>
+            </div>
             <?= $this->include('navbar-bottom')?>
-        </div>
     </body>
 </html>
