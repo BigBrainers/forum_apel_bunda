@@ -22,7 +22,7 @@
                     <h3>Form Login</h3>
                     <form autocomplete="off" action="<?= base_url('login/proceed') ?>" method="post">
                         <div class="form-group">
-                            <label for="">Username</label>
+                            <label for="">Username or Email</label>
                             <input autocomplete="FALSE" type="text" name="username" class="form-control" placeholder="Username" required>
                         </div>
                         <div class="form-group">
@@ -31,6 +31,9 @@
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-block btn-primary">Login</button>
+                            <?php if (!session()->getFlashdata('failed') == null){?>
+                                <p class="text-danger"><?= session()->getFlashdata('failed')?></p>
+                                <?php }?>
                             <p>Create an account here <a href="<?= base_url('/register') ?>">here.</a></p>
                         </div>
                     </form>

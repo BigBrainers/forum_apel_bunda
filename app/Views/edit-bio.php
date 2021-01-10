@@ -10,7 +10,7 @@
     })
 })
     </script>
-<form action="/user/edit-bio" method="post">
+<form action="<?= base_url('user/edit-bio/')?>" method="post">
         <div class="modal fade" id="editBio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-full" role="document">
             <div class="modal-content">

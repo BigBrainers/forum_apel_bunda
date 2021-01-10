@@ -28,8 +28,7 @@
 		</div>
 
 	<?php
-		if (session('id') == null){
-			echo '
+		if (session('id') == null){ ?>
 			<nav class="navbar navbar-dark navbar-bottom navbar-expand fixed-bottom">
 				<ul class="navbar-nav nav-justified w-100">
 					<li class="nav-item">
@@ -39,14 +38,10 @@
 						<a href="'. base_url("login/").'" class="nav-link">Login</a>
 					</li>
 				</ul>
-			</nav>';
-		} else {
+			</nav>;
+		<?php } else {
 			echo $this->include('navbar-bottom');
-			echo '
-			<a type="button" class=" btn-act text-white">
-				+
-			</a>
-			. $this->include("add-modal").';
+			echo $this->include("add-modal");
 		}
 	?>
 </body>

@@ -1,11 +1,13 @@
 <?php
 namespace App\Controllers;
 use App\Models\Auth_model;
+use App\Models\Users_model;
 
 class Register extends BaseController{
     public function __construct()
     {
         $this->auth = new Auth_model;
+        $this->users = new Users_model;
     }
     public function index(){
         return view('v_register');
@@ -13,7 +15,7 @@ class Register extends BaseController{
     public function usernamecheck(){
         if ($this->request->isAJAX()) {
             $username = service('request')->getPost('username');
-            $check = $this->auth->checkUsername($username);
+            $check = $this->users->checkUsername($username);
             //var_dump($this->request->getPost('query'));
             if(!empty($check)){
                 return json_encode(['success'=> 'success', 'csrf' => csrf_hash(), 'available' => false ]);
@@ -27,7 +29,7 @@ class Register extends BaseController{
     public function emailCheck(){
         if ($this->request->isAJAX()) {
             $email = service('request')->getPost('email');
-            $check = $this->auth->checkEmail($email);
+            $check = $this->users->checkEmail($email);
             //var_dump($this->request->getPost('query'));
             if(!empty($check)){
                 return json_encode(['success'=> 'success', 'csrf' => csrf_hash(), 'available' => false ]);

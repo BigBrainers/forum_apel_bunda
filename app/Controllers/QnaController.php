@@ -17,6 +17,7 @@ class QnaController extends BaseController{
         $data = array(
             'a_body' => $this->request->getPost('a_body'),
             'a_question_id' => $this->request->getPost('a_question_id'),
+            'a_author_id' => $this->request->getPost('q_user_id'),
             'a_user_id' => session()->get('id'),
             'a_issolution' => 0
         );

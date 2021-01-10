@@ -73,7 +73,7 @@
             $('.pass').keyup(function(){
                 var pass1 = $('#pass1').val();
                 var pass2 = $('#pass2').val();
-                if(pass1 === pass2){
+                if(pass1 === pass2 && pass1 !== ''){
                     $('#pass2').addClass('is-valid');
                     $('#pass1').addClass('is-valid');
                     $('#pass2').removeClass('is-invalid');

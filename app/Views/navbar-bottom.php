@@ -17,14 +17,23 @@ if ($('.navbar-bottom').length > 0) {
 </script>
 <nav class="navbar navbar-dark navbar-bottom navbar-expand fixed-bottom">
     <ul class="navbar-nav nav-justified w-100">
-        <li class="nav-item">
-            <a href="<?= base_url('/user') ?>" class="nav-link"> <?php echo file_get_contents("icons/house.svg"); ?></a>
-        </li>
+    <?php if (session()->get('isAdmin')){?>
+      <li class="nav-item ">
+        <a class="nav-link active" href="<?= base_url('admin/') ?>"><?php echo file_get_contents("icons/gear.svg"); ?></a>
+      </li>
+      <li class="nav-item">
+      <a href="<?= base_url('/user') ?>" class="nav-link"> <?php echo file_get_contents("icons/house.svg"); ?></a>
+      </li>
+      <?php } else{?>
+        <li class="nav-item ">
+        <a href="<?= base_url('/user') ?>" class="nav-link"> <?php echo file_get_contents("icons/house.svg"); ?></a>
+      </li>
+        <?php } ?>
         <li class="nav-item">
             <a type="button" class="nav-link btn-modal"> <?php echo file_get_contents("icons/plus.svg"); ?></a>
         </li>
         <li class="nav-item">
-            <a href="<?= base_url('/user/profile') ?>" class="nav-link"> <?php echo file_get_contents("icons/person.svg"); ?></a>
+            <a href="<?= base_url("/user/profile/". session()->get('username')."")?>" class="nav-link"> <?php echo file_get_contents("icons/person.svg"); ?></a>
         </li>
     </ul>
 </nav>

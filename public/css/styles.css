@@ -77,13 +77,18 @@
 .container-post{
     padding-top: 171px;
     padding-bottom: 90px;
-    min-height: 100%;
 }
 .nav-link svg{
     height: 40px;
 }
 svg {
     height: 16px;
+    width: 16px;
+}
+a svg {
+    height: 16px;
+    line-height: 0px;
+    font-size: 0.1rem;
     width: 16px;
 }
 
@@ -160,9 +165,8 @@ icon svg{
         max-width: 100%;
     }
     .navbar-cust {
-        padding: .5rem 0rem ;
-        height: 50px;
-        display: none;
+        padding: .5rem 0rem !important ;
+        height: 50px !important;
     }
     .navbar-cust a{
         width: 100%;

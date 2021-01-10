@@ -14,14 +14,10 @@ class Login extends BaseController{
     public function proceed(){
         $username = htmlspecialchars($this->request->getPost('username'));
         $password = htmlspecialchars($this->request->getPost('password'));
-
         $check = $this->auth->getLogin($username, $password);
         if(!empty($check)){
             session()->set("id", $check['user_id']);
             session()->set("username", $check['user_username']);
-            session()->set("email", $check['user_email']);
-            session()->set("bio", $check['user_bio']);
-            session()->set("password", $check['user_password']);
             session()->set("role", $check['user_role']);
             $isAdmin = $check['user_role'] === '2';
             if($isAdmin)
@@ -32,7 +28,8 @@ class Login extends BaseController{
             }
             return redirect()->to('/user');
         } else{
-            return redirect()->to('/user');
+            session()->setFlashdata('failed', "Login Gagal");
+            return redirect()->to('/login');
         }
     }
     public function logout()

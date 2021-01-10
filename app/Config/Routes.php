@@ -39,16 +39,19 @@ $routes->get('', 'UserController::index');
 $routes->post('postquestion', 'UserController::questionPost');
 $routes->post('editquestion', 'UserController::questionEdit');
 $routes->post('edit-bio', 'UserController::editBio');
-$routes->get('profile', 'UserController::profile');
+$routes->get('profile/(:alphanum)', 'UserController::profile/$1');
+$routes->post('editanswer', 'UserController::editAnswer');
+$routes->post('marksolution', 'UserController::markSolution');
+$routes->post('revokesolution', 'UserController::revokeSolution');
 
 });
 
 $routes->group('admin', ['filter' => 'admincheck'], function($routes) {
 $routes->get('', 'AdminController::index');
+$routes->post('viewtable', 'AdminController::viewTable');
 $routes->post('deletequestion', 'AdminController::deletePost');
 $routes->post('deleteanswer', 'AdminController::deleteAnswer');
-$routes->post('marksolution', 'AdminController::markSolution');
-$routes->post('revokesolution', 'AdminController::revokeSolution');
+$routes->post('deleteuser', 'AdminController::deleteUser');
 });
 /**
  * --------------------------------------------------------------------

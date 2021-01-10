@@ -5,68 +5,106 @@
 	<title>Welcome to Apel Bunda</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/datatables.min.css"/>
 	<link rel="stylesheet" href="css/styles.css"/>
 	<script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/datatables.min.js"></script>
 </head>
-<script>
-$(document).ready(function(){
-
-})
-</script>
 <body>
     <header>
         <?= $this->include('navbar')?>
     </header>
 <main class="container" id="startChange">
-        <section class="section-cust d-flex justify-content-center align-items-center">
-            <h2>
-            Hai <?= session()->get('username').'!'?>
-            <small class="text-muted">Selamat bertugas!</small>
-            </h2>
-            <div class="arrow-down"></div>
-        </section>
         <div class="row container-post">
-        <?php
-            foreach ($questions as $row){
-        ?>
-        <div class="col-sm-8 offset-sm-2">
-            <div class="article-card card mb-3">
-                <div class="card-header">
-                    <h5><?= $row->q_title;?></h5>
-                    <span class="text-muted">pada <?= date('l, d F Y, ', strtotime($row->q_date));?></span>
-                    <span class="text-muted">oleh</span> <i><?= $row->user_username;?></i>
-                    <?php if($row->q_user_id == session()->get('id')){ ?>
-                        <button class="btn btn-outline-dark editBtn float-right m-1"
-                        data-id="<?= $row->q_id?>" 
-                        data-body="<?= $row->q_body ?>"
-                        data-user_id="<?= $row->q_user_id ?>"
-                        data-title="<?= $row->q_title?>">
-                        <?php echo file_get_contents("icons/pencil.svg"); ?>
-                    </button>
-                    <?php } ?>
-                </div>
-                <div class="card-body ">
-                    <?php if(strlen($row->q_body)>439){?>
-                    <p><?= substr(nl2br($row->q_body), 0 ,460).'......(more)'; ?></p>
-                    <?php } else{?>
-                        <?= $row->q_body; }?>
-                </div>
-                <div class="card-footer text-center">
-                    <a href="<?= base_url('qna/'.$row->q_id)?>" type="submit" class="btn btn-outline-dark" value="">Selengkapnya</a>
-                </div>
-            </div>
-        </div>
-        <?php
-            }
-        ?>
+        <div class="col col-12">   
+        <table id="user-table" class="display table table-bordered table-striped table-hover dt-responsive nowrap" style="width:100%">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Date Joined</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>User ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Date Joined</th>
+                <th class="text-center">Action</th>
+            </tr>
+        </tfoot>
+    </table>
+    </div>
         </div>
         <a type="button" class=" btn-modal btn-act text-white">
         +
         </a>
             <?= $this->include('navbar-bottom')?>
-            <?= $this->include('edit-modal')?>
-            <?= $this->include('add-modal')?>
+            <form action="<?= base_url('admin/deleteuser')?>"  method="POST">
+        <div class="modal fade" id="delUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered text-white" role="document">
+            <div class="modal-content">
+            <div class="modal-header bg-danger">
+                <h5 class="modal-title" id="exampleModalLabel">Hapus User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body bg-danger">
+                <h3>Yakin mau dihapus?</h3>
+                <h1 class="u_u_id"></h1>
+            <input type="text" class="u_u_id" name="u_id" hidden>
+            </div>
+            <div class="modal-footer bg-danger">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+            </div>
+        </div>
+        </div>
+    </form>
     </main>
+    <?= $this->include('add-modal')?>
 </body>
+<script>
+
+    $(document).ready(function() {
+    $('#user-table').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "ordering": true, 
+            "order": [[ 0, 'asc' ]], 
+            "ajax":
+            {
+                "url": "<?= base_url('admin/viewtable') ?>",
+                "type": "POST"
+            },
+            "deferRender": true,
+            "aLengthMenu": [[5, 10, 50],[ 5, 10, 50]], 
+            "columns": [
+                { "data": "user_id" }, 
+                { "data": "user_username" },  
+                { "data": "user_email" },
+                { "data": "role_name" },
+                { "data": "user_date" },
+                { "data": "action" },
+            ],
+            "columnDefs": [
+            { "orderable": false, "targets": 5 },
+            { "width": "5%", "targets": 0 }
+        ]
+        });
+        $('#user-table').on('click','.deleteUser', function(){
+        const u_id = $(this).data('user_id');
+        console.log(u_id);
+        $('.u_u_id').val(u_id);
+        })
+    });
+    </script>
 </html>

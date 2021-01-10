@@ -15,33 +15,46 @@
     <header>
         <?= $this->include('navbar')?>
     </header>
-    <main class="container center" id="startChange">
+    <?php foreach ($userdata as $user){?>
+    <main class="container container-post" id="startChange">
 			<div class="row w-100">
-		        <div class="card col col-lg-8 offset-lg-2 border-success" >
+                <div class="col col-lg-10 mx-auto">
+		        <div class="card  border-success" >
                     <div class="card-header">
                         <h3>Profile</h3>
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col col-lg-6">
-                                <h2><?= session()->get('username') ?><small class="text-muted"><?= session()->get('email') ?></small></h2>
-                                <button class="btn btn-outline-dark bioBtn float-right m-1"
-                                    data-bio="<?= session()->get('bio') ?>"
-                                    >
-                                    <?php echo file_get_contents("icons/pencil.svg"); ?>
-                                </button>
-                            <p>Bio</p>
-                                <p><?= session()->get('bio') ?></p>
-                            </div>
-                            <div class="col col-lg-4 offset-lg-2">
+                        <div class="col col-lg-4 mx-auto">
                                 <img src="/icons/person.svg" alt="">
+                                <?php if(session()->get('id') == $user->user_id){?>
+                                <a href="<?= base_url('/logout')?>" class="btn btn-danger btn-block">
+                                    Logout
+                                </a>
+                                <?php }?>
+                            </div>
+                            <div class="col col-lg-8">
+                                <h2><?= $user->user_username ?><small class="text-muted"><?= $user->user_email ?></small></h2>
+                            <h4>Bio: 
+                            <?php if(session()->get('id') == $user->user_id){?>
+                            <a class="btn btn-light bioBtn m-1"
+                                    data-bio="<?= $user->user_bio ?>"
+                                    >
+                                    <?= file_get_contents("icons/pencil.svg"); ?>
+                                </a>
+                                <?php }?>
+                            </h4>
+                                <p><?= $user->user_bio ?></p>
                             </div>
                         </div>
         <?= $this->include('navbar-bottom')?>
+        <?= $this->include('add-modal')?>
         <?= $this->include('edit-bio')?>
         </div>
         </div>
         </div>
+        </div>
     </main>
+    <?php }?>
 </body>
 </html>

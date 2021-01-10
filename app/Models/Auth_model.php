@@ -11,19 +11,19 @@ class Auth_model extends Model{
   
     public function getLogin($username, $password)
     {
-        return $this->db->table($this->table)->where(['user_username' => $username, 'user_password' => $password])->get()->getRowArray();
+        $builder = $this->db->table($this->table);
+        $builder->select('user_id, user_email, user_role, user_username, user_password');
+            $builder->groupStart();
+                $builder->where(['user_username' => $username]);
+                $builder->orGroupStart();
+                    $builder->orWhere(['user_email' => $username]);
+                $builder->groupEnd();
+            $builder->groupEnd();
+            $builder->where(['user_password' => $password]);
+        return $builder->get()->getRowArray();
     }
 
-    public function checkUsername($username){
-        return $this->db->table($this->table)->where(['user_username' => $username])->get()->getRowArray();
-    }
-    public function checkEmail($email){
-        return $this->db->table($this->table)->where(['user_email' => $email])->get()->getRowArray();
-    }
     public function userRegist($data){
         return $this->db->table($this->table)->insert($data);
-    }
-    public function editBio($data){
-        return $this->db->table($this->table)->update($data, array('user_id' => $data['user_id']));
     }
 }
