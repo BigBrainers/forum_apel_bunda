@@ -1,5 +1,10 @@
 # CodeIgniter 4 Application Starter
 
+## Note from Authors
+  First of all, import sql dump (apel_bunda.sql) to your local Mysql/MariaDB database
+  then change your database credentials at app/Config/Database.php
+  then run with php spark serve
+
 ## What is CodeIgniter?
 
 CodeIgniter is a PHP full-stack web framework that is light, fast, flexible, and secure. 
