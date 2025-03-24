@@ -1,0 +1,36 @@
+name: PLEXALYZER Analysis
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  analyze:
+    if: ${{ !startsWith(github.head_ref, 'Plexicus-AI-Remediation-') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get Changed Files and Save to File
+        id: get_changed_files
+        shell: bash
+        run: |
+          # Capture changed files and save to a temporary file
+          changed_files=$(git diff --name-only "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}")
+          echo "$changed_files" | jq -R -s -c 'split("\n")[:-1]' > files_to_scan.json
+          echo "files_path=$(pwd)/files_to_scan.json" >> $GITHUB_ENV
+
+      - name: Run PLEXALYZER Analysis
+        uses: plexicus/plexicus-action@dev
+        with:
+          plexalyzer-token: ${{ secrets.PLEXALYZER_TOKEN }}
+          default-owner: ${{ github.event.repository.owner.login }}
+          repo-id: ${{ vars.COVULOR_REPO_ID }}
+          repo-name: ${{ github.repository }}
+          branch: ${{ github.event.pull_request.base.ref }}
+          url: ${{ github.event.repository.clone_url }}
+          pr-id: ${{ github.event.pull_request.number }}
+          files-path: ${{ env.files_path }}
+          workspace-path: ${{ github.workspace }}
